@@ -1,0 +1,33 @@
+{
+  "name": "redux-actions",
+  "version": "1.0.0",
+  "description": "A wrapper for acdlite/redux-actions that allows you to prefix types in actions",
+  "main": "src/index.js",
+  "repository": "tugorez/redux-actions",
+  "author": "tugorez",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack",
+    "test": "jest",
+    "test:all": "npm run lint && npm run test:coverage",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint --ignore-pattern coverage ."
+  },
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-jest": "^19.0.0",
+    "babel-loader": "^6.3.2",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
+    "eslint": "^3.16.1",
+    "eslint-config-airbnb-base": "^11.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "jest": "^19.0.2",
+    "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "redux-actions": "^1.2.2"
+  }
+}
