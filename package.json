@@ -1,8 +1,8 @@
 {
   "name": "ractionx",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A wrapper for acdlite/redux-actions that allows you to prefix types in actions",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "repository": "tugorez/redux-actions",
   "author": "tugorez",
   "license": "MIT",
