@@ -3,3 +3,5 @@ node_modules
 coverage
 bundle.js
 dist
+es
+lib
