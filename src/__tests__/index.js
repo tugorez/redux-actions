@@ -6,7 +6,7 @@ const type2 = 'SOME_RANDOM_TYPE_2';
 const type3 = 'SOME_RANDOM_TYPE_3';
 
 describe('createActions', () => {
-  it('should create the regular actions', () => {
+  it('should create the regular action\'s creators', () => {
     const {
       someRandomType1,
       someRandomType2,
@@ -19,6 +19,9 @@ describe('createActions', () => {
     expect(someRandomType1().type).toEqual(type1);
     expect(someRandomType2().type).toEqual(type2);
     expect(someRandomType3().type).toEqual(type3);
+    expect(someRandomType1.type).toEqual(type1);
+    expect(someRandomType2.type).toEqual(type2);
+    expect(someRandomType3.type).toEqual(type3);
   });
 
   it('should create the actions with a prefix', () => {
@@ -35,5 +38,8 @@ describe('createActions', () => {
     expect(someRandomType1().type).toEqual(`${prefix}/${type1}`);
     expect(someRandomType2().type).toEqual(`${prefix}/${type2}`);
     expect(someRandomType3().type).toEqual(`${prefix}/${type3}`);
+    expect(someRandomType1.type).toEqual(`${prefix}/${type1}`);
+    expect(someRandomType2.type).toEqual(`${prefix}/${type2}`);
+    expect(someRandomType3.type).toEqual(`${prefix}/${type3}`);
   });
 });

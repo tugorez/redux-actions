@@ -19,6 +19,7 @@ const createActions = (options, ...Alltypes) => {
     const type = camelCase(rawType);
     const prefixed = prefix(rawType);
     const action = createAction(prefixed);
+    action.type = prefixed;
     return { ...actions, [type]: action };
   }, {});
 };
