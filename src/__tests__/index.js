@@ -1,45 +1,23 @@
-import { createActions } from '../index';
+import { createActions, createReducer } from '../index';
 
-const prefix = 'some_random_prefix';
-const type1 = 'SOME_RANDOM_TYPE_1';
-const type2 = 'SOME_RANDOM_TYPE_2';
-const type3 = 'SOME_RANDOM_TYPE_3';
-
-describe('createActions', () => {
-  it('should create the regular action\'s creators', () => {
-    const {
-      someRandomType1,
-      someRandomType2,
-      someRandomType3,
-    } = createActions(
-      type1,
-      type2,
-      type3,
-    );
-    expect(someRandomType1().type).toEqual(type1);
-    expect(someRandomType2().type).toEqual(type2);
-    expect(someRandomType3().type).toEqual(type3);
-    expect(someRandomType1.type).toEqual(type1);
-    expect(someRandomType2.type).toEqual(type2);
-    expect(someRandomType3.type).toEqual(type3);
+describe('createActionsActions', () => {
+  it('should createActions actions', () => {
+    const prefix = '@prefix';
+    const types = ['RANDOM_ACTION1', 'RANDOM_ACTION2'];
+    const actions = createActions(prefix, types);
+    expect(actions.randomAction1()).toMatchSnapshot();
+    expect(actions.randomAction2()).toMatchSnapshot();
   });
 
-  it('should create the actions with a prefix', () => {
-    const {
-      someRandomType1,
-      someRandomType2,
-      someRandomType3,
-    } = createActions(
-      { prefix },
-      type1,
-      type2,
-      type3,
-    );
-    expect(someRandomType1().type).toEqual(`${prefix}/${type1}`);
-    expect(someRandomType2().type).toEqual(`${prefix}/${type2}`);
-    expect(someRandomType3().type).toEqual(`${prefix}/${type3}`);
-    expect(someRandomType1.type).toEqual(`${prefix}/${type1}`);
-    expect(someRandomType2.type).toEqual(`${prefix}/${type2}`);
-    expect(someRandomType3.type).toEqual(`${prefix}/${type3}`);
+  it('should create a valid reducer', () => {
+    const prefix = '@calculator';
+    const actions = createActions(prefix, ['ADD', 'SUB']);
+    const initial = 0;
+    const reducer = createReducer(initial, {
+      [actions.add]: (state, { payload = 1 }) => state + payload,
+      [actions.sub]: (state, { payload = 1 }) => state - payload,
+    });
+    expect(reducer(undefined, actions.add())).toMatchSnapshot();
+    expect(reducer(undefined, actions.sub())).toMatchSnapshot();
   });
 });

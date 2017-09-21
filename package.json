@@ -1,23 +1,21 @@
 {
   "name": "ractionx",
-  "version": "1.0.5",
-  "description": "A wrapper for acdlite/redux-actions that allows you to prefix types in actions",
+  "version": "1.0.6",
+  "description":
+    "A wrapper for acdlite/redux-actions that allows you to prefix types in actions",
   "main": "lib/index.js",
   "repository": "tugorez/redux-actions",
   "author": "tugorez",
   "license": "MIT",
-  "files": [
-    "es",
-    "lib",
-    "dist"
-  ],
+  "files": ["es", "lib", "dist"],
   "scripts": {
     "test": "jest",
     "test:all": "npm run lint && npm run test:coverage",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "lint": "eslint .",
-    "build": "npm run test:all && rimraf lib es dist && npm run build:es && npm run build:common && npm run build:umd",
+    "lint": "eslint --fix .",
+    "build":
+      "npm run test:all && rimraf lib es dist && npm run build:es && npm run build:common && npm run build:umd",
     "build:es": "babel src --out-dir es --ignore __tests__/*",
     "build:common": "babel src --out-dir lib --ignore __tests__/*",
     "build:umd": "webpack",

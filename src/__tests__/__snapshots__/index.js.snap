@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createActionsActions should create a valid reducer 1`] = `1`;
+
+exports[`createActionsActions should create a valid reducer 2`] = `-1`;
+
+exports[`createActionsActions should createActions actions 1`] = `
+Object {
+  "type": "@prefix/RANDOM_ACTION1",
+}
+`;
+
+exports[`createActionsActions should createActions actions 2`] = `
+Object {
+  "type": "@prefix/RANDOM_ACTION2",
+}
+`;

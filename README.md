@@ -9,19 +9,16 @@ Actually I just wrap a single function: createActions which now only receives an
 
 ```javascript
 const prefix = 'some_random_prefix';
-const type1 = 'SOME_RANDOM_TYPE_1';
-const type2 = 'SOME_RANDOM_TYPE_2';
-const type3 = 'SOME_RANDOM_TYPE_3';
+const types = [
+  'SOME_RANDOM_TYPE_1', 
+  'SOME_RANDOM_TYPE_2',
+  'SOME_RANDOM_TYPE_3',
+];
 const {
   someRandomType1,
   someRandomType2,
   someRandomType3,
-} = createActions(
-  { prefix },
-  type1,
-  type2,
-  type3,
-);
+} = createActions(prefix, types);
 expect(someRandomType1().type).toEqual(`${prefix}/${type1}`);
 expect(someRandomType2().type).toEqual(`${prefix}/${type2}`);
 expect(someRandomType3().type).toEqual(`${prefix}/${type3}`);

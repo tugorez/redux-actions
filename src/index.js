@@ -1,33 +1,14 @@
-import {
-  createAction,
-  handleAction,
-  handleActions,
-  combineActions,
-} from 'redux-actions';
+import { createAction, handleActions } from 'redux-actions';
 import camelCase from './camelcase';
 
-const prepareTypes = (opts, types) =>
-  (typeof opts === 'string' ? [opts, ...types] : types);
-
-const preparePrefix = opts => sufx =>
-  (typeof opts === 'object' && opts.prefix ? `${opts.prefix}/${sufx}` : sufx);
-
-const createActions = (options, ...Alltypes) => {
-  const types = prepareTypes(options, Alltypes);
-  const prefix = preparePrefix(options);
-  return types.reduce((actions, rawType) => {
-    const type = camelCase(rawType);
-    const prefixed = prefix(rawType);
+const createActions = (prefix, types) =>
+  types.reduce((actions, type) => {
+    const prefixed = `${prefix}/${type}`;
     const action = createAction(prefixed);
     action.type = prefixed;
-    return { ...actions, [type]: action };
+    return { ...actions, [camelCase(type)]: action };
   }, {});
-};
 
-export {
-  createAction,
-  createActions,
-  handleAction,
-  handleActions,
-  combineActions,
-};
+const createReducer = (initial, reducer) => handleActions(reducer, initial);
+
+export { createActions, createReducer };
